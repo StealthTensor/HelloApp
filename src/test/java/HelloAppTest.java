@@ -34,4 +34,18 @@ public class HelloAppTest {
         String output = outputStream.toString().trim();
         assertEquals("Hello, Alice!", output);
     }
+
+    @Test
+    public void testMultipleNamesGreeting() {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        PrintStream printStream = new PrintStream(outputStream);
+        PrintStream originalOut = System.out;
+        System.setOut(printStream);
+
+        HelloApp.main(new String[]{"Alice", "Bob", "Charlie"});
+
+        System.setOut(originalOut);
+        String output = outputStream.toString().trim();
+        assertEquals("Hello, Alice, Bob, Charlie!", output);
+    }
 }
