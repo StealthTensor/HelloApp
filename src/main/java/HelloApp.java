@@ -5,10 +5,10 @@ public class HelloApp {
         } else {
             StringBuilder sb = new StringBuilder();
             for (String name : args) {
-                if (sb.length() > 0) sb.append(", ");
-                sb.append(name);
+                sb.append(name).append(", ");
             }
-            System.out.println("Hello, " + sb.toString() + "!");
+            String names = sb.substring(0, sb.length() - 2);
+            System.out.println("Hello, " + names + "!");
         }
     }
 }
